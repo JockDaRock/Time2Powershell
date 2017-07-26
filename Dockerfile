@@ -6,7 +6,7 @@ RUN chmod +x /usr/bin/fwatchdog
 
 WORKDIR /root/
 
-COPY time2powershell.ps1
+COPY time2powershell.ps1 .
 
 ENV fprocess="time2powershell.ps1"
 
