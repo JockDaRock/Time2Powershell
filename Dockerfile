@@ -1,8 +1,8 @@
-FROM ciscoucspowertool/ucspowertoolcore
+FROM microsoft/powershell
 
 ENV TMPDIR /tmp
 
-ADD https://github.com/alexellis/faas/releases/download/0.5.6-alpha/fwatchdog /usr/bin
+ADD https://github.com/alexellis/faas/releases/download/0.5.8-alpha/fwatchdog /usr/bin
 
 RUN apt-get update && apt-get -y upgrade && apt-get install -y python3-pip
 
