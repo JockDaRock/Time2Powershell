@@ -1,4 +1,4 @@
-FROM ciscoucspowertool/ucspowertoolcore
+FROM microsoft/powershell
 
 ENV TMPDIR /tmp
 
@@ -10,13 +10,10 @@ RUN chmod +x /usr/bin/fwatchdog
 
 WORKDIR /root/
 
-COPY time2powershell.ps1 .
 COPY time2powershell.py .
 
 ENV fprocess="python3 time2powershell.py"
 
 HEALTHCHECK --interval=1s CMD [ -e /tmp/.lock ] || exit 1
-
-ENTRYPOINT "/bin/sh"
 
 CMD ["fwatchdog"]
