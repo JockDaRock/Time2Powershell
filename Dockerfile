@@ -2,13 +2,16 @@ FROM ciscoucspowertool/ucspowertoolcore
 
 ADD https://github.com/alexellis/faas/releases/download/0.5.6-alpha/fwatchdog /usr/bin
 
+RUN apt-get update && apt-get -y upgrade && apt-get install -y python3-pip
+
 RUN chmod +x /usr/bin/fwatchdog
 
 WORKDIR /root/
 
 COPY time2powershell.ps1 .
+COPY time2powershell.py .
 
-ENV fprocess="time2powershell.ps1"
+ENV fprocess="python3 time2powershell.py"
 
 HEALTHCHECK --interval=1s CMD [ -e /tmp/.lock ] || exit 1
 
