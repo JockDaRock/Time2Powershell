@@ -16,4 +16,4 @@ ENV fprocess="python3 time2powershell.py"
 
 HEALTHCHECK --interval=1s CMD [ -e /tmp/.lock ] || exit 1
 
-CMD ["fwatchdog"]
+CMD ["/usr/bin/fwatchdog"]
